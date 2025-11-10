@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools", "wheel", "setuptools_scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "scotts_pytemplates"
+dynamic = ["version"]
+description = ""
+readme = "README.md"
+license = {text = "GPLv3"}
+authors = [
+    {name = "Scott CJX", email = "scottcjx.w@gmail.com"},
+]
+dependencies = [
+    "pyside6",
+    "appdata",
+    "pyyaml",
+    "psutil",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools_scm]
+write_to = "src/__version__.py"
