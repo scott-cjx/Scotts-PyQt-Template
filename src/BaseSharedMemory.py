@@ -15,6 +15,7 @@ class BaseSharedMemoryDict:
     _configs = None
     _preferences_fp: str
     _preferences: dict = {}
+    __inited: bool = False
 
     def __init__(self, configs: BaseConfigs = BaseConfigs) -> None:
         self._configs = configs
@@ -22,10 +23,12 @@ class BaseSharedMemoryDict:
     
     @property
     def appData_dir(self):
-        ret = AppDataPaths(self._configs.app_name).app_data_path
-        os.makedirs(ret, exist_ok=True)
-        print("Preference File: " + ret)
-        return ret
+        if not self.__inited:
+            ret = AppDataPaths(self._configs.app_name).app_data_path
+            os.makedirs(ret, exist_ok=True)
+            print("Preference File: " + ret)
+            self.__inited = True
+            return ret
     
     def _init_preferences(self):
         self._preferences_fp = os.path.join(self.appData_dir, self._configs.preferences_fp)
@@ -54,4 +57,4 @@ class BaseSharedMemoryDict:
             self.write_preferences()
         return ret
 
-baseSharedMemoryDict = BaseSharedMemoryDict()
+# baseSharedMemoryDict = BaseSharedMemoryDict()

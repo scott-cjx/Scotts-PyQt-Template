@@ -6,7 +6,7 @@ from typing import Optional
 import sys
 import platform
 
-from BaseSharedMemory import BaseSharedMemoryDict, baseSharedMemoryDict
+from BaseSharedMemory import BaseSharedMemoryDict
 
 
 class BaseWidget(QWidget):
@@ -133,12 +133,15 @@ class BaseWidget(QWidget):
             QShortcut(QKeySequence("Alt+F4"), self, self.close)
 
     @classmethod
-    def demo(cls, window_sz=(600, 400), min_window_sz=(600, 400)):
+    def demo(cls,  sharedMemory: BaseSharedMemoryDict = None, window_sz=(600, 400), min_window_sz=(600, 400)):
         """Launch the widget standalone for demo/testing purposes."""
         app = QApplication.instance() or QApplication(sys.argv)
         widget = cls()
 
-        widget = cls(sharedMem=baseSharedMemoryDict)
+        if not sharedMemory:
+            sharedMemory = BaseSharedMemoryDict()
+
+        widget = cls(sharedMem=sharedMemory)
 
         if hasattr(widget, '_demo') and callable(getattr(widget, '_demo')):
             widget._demo()

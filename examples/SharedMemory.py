@@ -6,7 +6,7 @@ from BaseConfigs import BaseConfigs
 
 
 class Config(BaseConfigs):
-    app_name = "EphysLive"
+    app_name = "ScottsPyQtTemplate"
     preferences_fp = "preferences.yaml"
 
     default_preferences = {
