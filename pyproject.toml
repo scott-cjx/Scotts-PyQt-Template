@@ -3,7 +3,7 @@ requires = ["setuptools", "wheel", "setuptools_scm"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "scotts_pytemplates"
+name = "scotts-pyqt-template"
 dynamic = ["version"]
 description = ""
 readme = "README.md"
