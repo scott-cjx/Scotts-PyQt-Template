@@ -38,11 +38,10 @@ class BaseSharedMemoryDict:
 
         if not self._preferences:
             self._preferences = self._configs.default_preferences
-            self.write_preferences()
-        
-        for k in self._configs.default_preferences:
+    
+        for k in self._configs.default_preferences.keys():
             if k not in self._preferences.keys():
-                self._preferences = self._configs.default_preferences.get(k)
+                self._preferences[k] = self._configs.default_preferences.get(k)
         self.write_preferences()
             
 
