@@ -21,6 +21,7 @@ class BaseSharedMemoryDict:
         self._configs = configs
         self._init_preferences()
     
+    _appData_dir: str
     @property
     def appData_dir(self):
         if not self.__inited:
@@ -28,6 +29,7 @@ class BaseSharedMemoryDict:
             os.makedirs(ret, exist_ok=True)
             print("Preference File: " + ret)
             self.__inited = True
+            self._appData_dir = ret
             return ret
     
     def _init_preferences(self):
@@ -43,7 +45,6 @@ class BaseSharedMemoryDict:
             if k not in self._preferences.keys():
                 self._preferences[k] = self._configs.default_preferences.get(k)
         self.write_preferences()
-            
 
     def read_preferences(self):
         with open(self._preferences_fp, "r") as f:
