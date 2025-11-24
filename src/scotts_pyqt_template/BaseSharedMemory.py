@@ -2,7 +2,7 @@ from appdata import AppDataPaths
 import yaml
 import os
 
-from BaseConfigs import BaseConfigs
+from scotts_pyqt_template.BaseConfigs import BaseConfigs
 
 
 class BaseSharedMemoryDict:

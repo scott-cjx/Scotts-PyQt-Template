@@ -5,7 +5,7 @@ from typing import Optional
 import sys
 import platform
 
-from BaseSharedMemory import BaseSharedMemoryDict
+from scotts_pyqt_template.BaseSharedMemory import BaseSharedMemoryDict
 
 
 class BaseWidget(QWidget):
